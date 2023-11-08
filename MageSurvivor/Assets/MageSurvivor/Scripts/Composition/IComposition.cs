@@ -5,6 +5,7 @@ namespace MageSurvivor
 {
     public interface IComposition : IDisposable
     {
+        IViewFactory GetViewFactory();
         IResourceManager GetResourceManager();
     }
 }

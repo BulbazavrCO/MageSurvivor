@@ -5,7 +5,12 @@ namespace MageSurvivor
 {
     public class CompositionRoot : MonoBehaviour
     {
-        public static IComposition Composition;
+        public static IComposition Composition = new ReleaseComposition();
+
+        public static IViewFactory GetViewFactory()
+        {
+            return Composition.GetViewFactory();
+        }
 
         public static IResourceManager GetResourceManager()
         {
