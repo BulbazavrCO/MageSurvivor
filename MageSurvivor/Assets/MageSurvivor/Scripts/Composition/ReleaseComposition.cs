@@ -10,8 +10,9 @@ namespace MageSurvivor
         private IGameConfiguration _gameConfiguration;
 
         // Long living objects
-        private IProfile _profile;
+        private IProfile _profile;      
         private IConfigReader _configReader;
+        private IProfileStorage _profileStorage;
 
         public void Dispose()
         {
@@ -62,6 +63,19 @@ namespace MageSurvivor
             }
 
             return _configReader;
+        }
+
+        public IProfileStorage GetProfileStorage()
+        {
+            if(_profileStorage == null)
+            {
+                var profile = GetProfile();
+                var configReader = GetConfigReader();
+
+                _profileStorage = new ProfileStorage(profile, configReader);
+            }
+
+            return _profileStorage;
         }
 
         public IGameConfiguration GetGameConfiguration()

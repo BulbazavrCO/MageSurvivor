@@ -9,6 +9,7 @@ namespace MageSurvivor
         IProfile GetProfile();
         IViewFactory GetViewFactory();
         IConfigReader GetConfigReader();
+        IProfileStorage GetProfileStorage();
         IResourceManager GetResourceManager();
         IGameConfiguration GetGameConfiguration();
     }
