@@ -1,3 +1,4 @@
+using MageSurvivor.PlayerProfile;
 using MageSurvivor.Utils;
 
 namespace MageSurvivor
@@ -6,11 +7,28 @@ namespace MageSurvivor
     {
         private IViewFactory _viewFactory;
         private IResourceManager _resourcesManager;
+        private IGameConfiguration _gameConfiguration;
+
+        // Long living objects
+        private IProfile _profile;
+        private IConfigReader _configReader;
 
         public void Dispose()
         {
             _viewFactory = null;
             _resourcesManager = null;
+            _gameConfiguration = null;
+        }
+
+        public IProfile GetProfile()
+        {
+            if(_profile == null)
+            {
+                var gameConfiguration = GetGameConfiguration();
+                _profile = new Profile(gameConfiguration);
+            }
+
+            return _profile;
         }
 
         public IViewFactory GetViewFactory()
@@ -34,6 +52,27 @@ namespace MageSurvivor
             }
 
             return _resourcesManager;
-        }       
+        }
+
+        public IConfigReader GetConfigReader()
+        {
+            if(_configReader == null)
+            {
+                _configReader = new ConfigReader();
+            }
+
+            return _configReader;
+        }
+
+        public IGameConfiguration GetGameConfiguration()
+        {
+            if(_gameConfiguration == null)
+            {
+                var configReader = GetConfigReader();
+                _gameConfiguration = configReader.GetGameConfiguration();
+            }
+
+            return _gameConfiguration;
+        }
     }
 }
