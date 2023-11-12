@@ -7,6 +7,7 @@ namespace MageSurvivor.PlayerProfile
         public int Id;
         public int Gems;
         public int Coins;
+        public int SelectedCharacter;
         
         public List<int> Characters;
     }

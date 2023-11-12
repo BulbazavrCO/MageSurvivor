@@ -22,6 +22,11 @@ namespace MageSurvivor
             return _composition.GetProfileStorage();
         }
 
+        public static MenuPresenter GetMenuPresenter()
+        {
+            return _composition.GetMenuPresenter();
+        }
+
         private void OnDestroy()
         {
             _composition.Dispose(); 

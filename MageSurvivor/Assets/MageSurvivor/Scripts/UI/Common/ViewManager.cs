@@ -6,20 +6,20 @@ namespace MageSurvivor
     public class ViewManager 
     {
         private List<IView> _views;
-        private Dictionary<EViewLayer, int> LayerOrder;
+        private Dictionary<EViewLayer, int> _layerOrder;
 
         private const int ViewCount = 100;
 
         public ViewManager()
         {
             _views = new List<IView>();
-            LayerOrder = new Dictionary<EViewLayer, int>();
+            _layerOrder = new Dictionary<EViewLayer, int>();
 
             int index = 0;
 
             foreach (EViewLayer element in Enum.GetValues(typeof(EViewLayer)))
             {
-                LayerOrder.Add(element, index);
+                _layerOrder.Add(element, index);
                 index += ViewCount;
             }
         }
@@ -30,8 +30,8 @@ namespace MageSurvivor
                 return;
 
             _views.Add(view);
-            var canvasOrder = LayerOrder[view.ViewLayer];
-            LayerOrder[view.ViewLayer] += 1;
+            var canvasOrder = _layerOrder[view.ViewLayer];
+            _layerOrder[view.ViewLayer] += 1;
             view.SetCanvasOrder(canvasOrder);
         }
 
@@ -41,12 +41,18 @@ namespace MageSurvivor
                 return;
 
             _views.Remove(view);
-            LayerOrder[view.ViewLayer] -= 1;
+            _layerOrder[view.ViewLayer] -= 1;
         }
 
         public void Disable()
         {
             _views.ForEach(view => view.Disable());
+            int index = 0;
+            foreach(var layer in _layerOrder.Keys)
+            {
+                _layerOrder[layer] = index;
+                index += ViewCount;
+            }
             _views.Clear();
         }
     }

@@ -49,5 +49,12 @@ namespace MageSurvivor.PlayerProfile
             BalanceChanged();
             CharactersChanged();
         }
+
+        public void SelectCharacter(int id)
+        {
+            _profileState.PlayerState.SelectedCharacter = id;
+
+            CharactersChanged();
+        }
     }
 }

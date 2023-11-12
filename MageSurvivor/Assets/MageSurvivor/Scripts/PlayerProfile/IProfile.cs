@@ -11,6 +11,7 @@ namespace MageSurvivor.PlayerProfile
         void SetState(ProfileState profileState);
 
         void BuyCharacter(int id);
+        void SelectCharacter(int id);
         void LevelUpCharacter(int id);        
     }
 }

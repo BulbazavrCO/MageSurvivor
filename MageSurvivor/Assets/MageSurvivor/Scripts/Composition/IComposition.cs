@@ -12,5 +12,8 @@ namespace MageSurvivor
         IProfileStorage GetProfileStorage();
         IResourceManager GetResourceManager();
         IGameConfiguration GetGameConfiguration();
+
+        ViewManager GetViewManager();
+        MenuPresenter GetMenuPresenter();
     }
 }

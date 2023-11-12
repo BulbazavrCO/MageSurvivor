@@ -9,6 +9,9 @@ namespace MageSurvivor
         private IResourceManager _resourcesManager;
         private IGameConfiguration _gameConfiguration;
 
+        private ViewManager _viewManager;
+        private MenuPresenter _menuPresenter;
+
         // Long living objects
         private IProfile _profile;      
         private IConfigReader _configReader;
@@ -17,8 +20,10 @@ namespace MageSurvivor
         public void Dispose()
         {
             _viewFactory = null;
+            _viewManager = null;
+            _menuPresenter = null;
             _resourcesManager = null;
-            _gameConfiguration = null;
+            _gameConfiguration = null;           
         }
 
         public IProfile GetProfile()
@@ -87,6 +92,28 @@ namespace MageSurvivor
             }
 
             return _gameConfiguration;
+        }
+
+        public ViewManager GetViewManager()
+        {
+            if(_viewManager == null)
+            {
+                _viewManager = new ViewManager();
+            }
+
+            return _viewManager;
+        }
+
+        public MenuPresenter GetMenuPresenter()
+        {
+            if(_menuPresenter == null)
+            {
+                var viewFactory = GetViewFactory();
+                var viewManager = GetViewManager();
+                _menuPresenter = new MenuPresenter(viewFactory, viewManager);
+            }
+
+            return _menuPresenter;
         }
     }
 }

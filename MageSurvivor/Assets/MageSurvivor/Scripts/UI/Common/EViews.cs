@@ -2,6 +2,8 @@ namespace MageSurvivor
 {
     public enum EViews
     {
-        HUDView
+        MenuView,
+        ShpView,
+        HUDView       
     }
 }
