@@ -60,6 +60,16 @@ namespace MageSurvivor.PlayerProfile
             CharactersChanged();
         }
 
+        public BalanceInfo GetBalance()
+        {
+            var gems = _profileState.PlayerState.Gems;
+            var coins = _profileState.PlayerState.Coins;
+
+            var balanceInfo = new BalanceInfo(gems, coins);
+
+            return balanceInfo;
+        }
+
         public CharacterInfo GetCharacter(int id)
         {
             var characterState = _profileState.Characters[id];

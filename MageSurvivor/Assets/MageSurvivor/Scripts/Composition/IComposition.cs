@@ -16,6 +16,7 @@ namespace MageSurvivor
         ViewManager GetViewManager();
         MenuPresenter GetMenuPresenter();
         ShopPresenter GetShopPresenter();
+        BalancePresenter GetBalancePresenter();
         CharactersPresenter GetCharactersPresenter();
     }
 }

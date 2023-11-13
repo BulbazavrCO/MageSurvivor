@@ -12,6 +12,7 @@ namespace MageSurvivor
         private ViewManager _viewManager;
         private MenuPresenter _menuPresenter;
         private ShopPresenter _shopPresenter;
+        private BalancePresenter _balancePresenter;
         private CharactersPresenter _charactersPresenter;
 
         // Long living objects
@@ -25,6 +26,7 @@ namespace MageSurvivor
             _viewManager = null;
             _menuPresenter = null;
             _shopPresenter = null;
+            _balancePresenter = null;
             _resourcesManager = null;            
             _gameConfiguration = null;
             _charactersPresenter = null;
@@ -101,6 +103,16 @@ namespace MageSurvivor
             }
 
             return _viewManager;
+        }
+
+        public BalancePresenter GetBalancePresenter()
+        {
+            if(_balancePresenter == null)
+            {
+                _balancePresenter = new BalancePresenter(GetViewFactory(), GetViewManager(), GetProfile());
+            }
+
+            return _balancePresenter;
         }
 
         public MenuPresenter GetMenuPresenter()

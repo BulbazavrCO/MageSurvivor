@@ -193,8 +193,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -320}
-  m_SizeDelta: {x: 800, y: 1500}
+  m_AnchoredPosition: {x: 0, y: -200}
+  m_SizeDelta: {x: 800, y: 1700}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &2264409910212832783
 MonoBehaviour:
@@ -286,7 +286,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Characters
+  m_text: Shop
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -581,9 +581,9 @@ GameObject:
   - component: {fileID: 6817557465272935624}
   - component: {fileID: 6817557465272935625}
   - component: {fileID: 6817557465272935670}
-  - component: {fileID: 3125736344499863599}
+  - component: {fileID: 2509803580639462963}
   m_Layer: 5
-  m_Name: CharactersView
+  m_Name: ShopView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -671,7 +671,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &3125736344499863599
+--- !u!114 &2509803580639462963
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -680,10 +680,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 6817557465272935671}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7dab0e319a812420cbd7da04f440be9a, type: 3}
+  m_Script: {fileID: 11500000, guid: 38c4c897950044973b5a58b0c88b338f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _canvas: {fileID: 6817557465272935624}
   _content: {fileID: 621852224983800649}
-  _widgetsParent: {fileID: 6000254199607861839}
-  _back: {fileID: 2719270368515937171}

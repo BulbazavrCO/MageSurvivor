@@ -8,6 +8,9 @@ namespace MageSurvivor
         {
             var menuPresenter = CompositionRoot.GetMenuPresenter();
             menuPresenter.Enable();
+
+            var balancePresenter = CompositionRoot.GetBalancePresenter();
+            balancePresenter.Enable();
         }
     }
 }
