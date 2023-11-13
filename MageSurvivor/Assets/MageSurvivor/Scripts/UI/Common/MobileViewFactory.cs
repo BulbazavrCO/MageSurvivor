@@ -19,9 +19,9 @@ namespace MageSurvivor
             var mobileType = Enum.Parse<EMobileViews>(type.ToString());            
             var resource = _resourceManager.GetFromPool<EMobileViews, TResult>(mobileType);
             var view = (IView)resource;
-
+            
             view.Disable();
-            view.SetParrent(_uiRoot.transform);
+            view.SetParrent(_uiRoot.transform);            
 
             return resource;
         }             

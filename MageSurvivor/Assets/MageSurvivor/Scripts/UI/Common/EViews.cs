@@ -4,6 +4,7 @@ namespace MageSurvivor
     {
         MenuView,
         ShpView,
-        HUDView       
+        CharactersView,
+        HUDView   
     }
 }

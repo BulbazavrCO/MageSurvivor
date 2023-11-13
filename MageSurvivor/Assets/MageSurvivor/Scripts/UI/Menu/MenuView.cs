@@ -7,6 +7,7 @@ namespace MageSurvivor
     public class MenuView : MonoBehaviour, IMenuView
     {
         [SerializeField] private Canvas _canvas;
+        [SerializeField] private GameObject _content;
 
         [SerializeField] private Button _play;
         [SerializeField] private Button _shop;
@@ -20,12 +21,12 @@ namespace MageSurvivor
 
         public void Enable()
         {
-            gameObject.SetActive(true);
+            _content.SetActive(true);
         }
 
         public void Disable()
         {
-            gameObject.SetActive(false);
+            _content.SetActive(false);
         }        
 
         public void SetCanvasOrder(int canvasOrder)

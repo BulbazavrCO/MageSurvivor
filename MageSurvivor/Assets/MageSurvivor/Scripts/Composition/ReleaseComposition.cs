@@ -11,6 +11,8 @@ namespace MageSurvivor
 
         private ViewManager _viewManager;
         private MenuPresenter _menuPresenter;
+        private ShopPresenter _shopPresenter;
+        private CharactersPresenter _charactersPresenter;
 
         // Long living objects
         private IProfile _profile;      
@@ -22,16 +24,17 @@ namespace MageSurvivor
             _viewFactory = null;
             _viewManager = null;
             _menuPresenter = null;
-            _resourcesManager = null;
-            _gameConfiguration = null;           
+            _shopPresenter = null;
+            _resourcesManager = null;            
+            _gameConfiguration = null;
+            _charactersPresenter = null;
         }
 
         public IProfile GetProfile()
         {
             if(_profile == null)
-            {
-                var gameConfiguration = GetGameConfiguration();
-                _profile = new Profile(gameConfiguration);
+            {               
+                _profile = new Profile(GetGameConfiguration());
             }
 
             return _profile;
@@ -41,10 +44,9 @@ namespace MageSurvivor
         {
             if(_viewFactory == null)
             {
-                var uiRoot = MonoExtention.MakeComponent<UIRoot>();
-                var resourcesManager = GetResourceManager();
+                var uiRoot = MonoExtention.MakeComponent<UIRoot>();        
 
-                _viewFactory = new MobileViewFactory(uiRoot, resourcesManager);
+                _viewFactory = new MobileViewFactory(uiRoot, GetResourceManager());
             }
 
             return _viewFactory;
@@ -74,10 +76,7 @@ namespace MageSurvivor
         {
             if(_profileStorage == null)
             {
-                var profile = GetProfile();
-                var configReader = GetConfigReader();
-
-                _profileStorage = new ProfileStorage(profile, configReader);
+                _profileStorage = new ProfileStorage(GetProfile(), GetConfigReader());
             }
 
             return _profileStorage;
@@ -108,12 +107,31 @@ namespace MageSurvivor
         {
             if(_menuPresenter == null)
             {
-                var viewFactory = GetViewFactory();
-                var viewManager = GetViewManager();
-                _menuPresenter = new MenuPresenter(viewFactory, viewManager);
+                _menuPresenter = new MenuPresenter(GetViewFactory(), GetViewManager(), GetShopPresenter(), GetCharactersPresenter());
             }
 
             return _menuPresenter;
+        }
+
+        public ShopPresenter GetShopPresenter()
+        {
+            if(_shopPresenter == null)
+            {               
+
+                _shopPresenter = new ShopPresenter(GetViewFactory(), GetViewManager());
+            }
+
+            return _shopPresenter;
+        }
+
+        public CharactersPresenter GetCharactersPresenter()
+        {
+            if(_charactersPresenter == null)
+            {
+                _charactersPresenter = new CharactersPresenter(GetViewFactory(), GetViewManager(), GetProfile());
+            }
+
+            return _charactersPresenter;
         }
     }
 }

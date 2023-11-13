@@ -12,6 +12,8 @@ namespace MageSurvivor.PlayerProfile
 
         void BuyCharacter(int id);
         void SelectCharacter(int id);
-        void LevelUpCharacter(int id);        
+        void LevelUpCharacter(int id);
+        CharacterInfo GetCharacter(int id);
+        List<CharacterInfo> GetCharacters();
     }
 }
