@@ -1,24 +1,32 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+using MageSurvivor.PlayerProfile;
 
 namespace MageSurvivor
 {
     public class ShopPresenter
     {
-        public ShopPresenter(IViewFactory viewFactory, ViewManager viewManager)
-        {
+        private IProfile _profile;
 
+        private ViewManager _viewManager;
+
+        public ShopPresenter(IViewFactory viewFactory, ViewManager viewManager, IProfile profile)
+        {
+            _profile = profile;
+            _viewManager = viewManager;
         }
 
         public void Enable()
         {
-
+            UpdateView();
         }
 
         public void Disable()
         {
 
+        }
+
+        private void UpdateView()
+        {
+            var characters = _profile.GetCharacterProducts();
         }
     }
 }

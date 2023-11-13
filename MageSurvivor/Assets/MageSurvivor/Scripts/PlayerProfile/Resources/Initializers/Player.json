@@ -2,6 +2,7 @@
 	"Id": 0,
 	"Coins": 100,
 	"Gems": 0,
+	"SelectedCharacter": 1,
 
 	"Characters": [
 		1

@@ -1,7 +1,9 @@
 ﻿[
     {
         "Id": 1,
-        "MaxLevel" : 10,
+        "MaxLevel": 10,
+        "Name": "FireMage",
+        "Description" : "",
         "LevelsCost": [
             0,
             10,
@@ -18,8 +20,10 @@
     {
         "Id": 2,
         "MaxLevel": 10,
+        "Name": "IceMage",
+        "Description": "",
         "LevelsCost": [
-            100,
+            0,
             20,
             40,
             60,
@@ -34,8 +38,10 @@
     {
         "Id": 3,
         "MaxLevel": 10,
+        "Name": "EarthMage",
+        "Description": "",
         "LevelsCost": [
-            300,
+            0,
             50,
             100,
             150,

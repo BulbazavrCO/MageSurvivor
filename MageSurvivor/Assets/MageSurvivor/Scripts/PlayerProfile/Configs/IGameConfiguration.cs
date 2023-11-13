@@ -2,6 +2,7 @@ namespace MageSurvivor.PlayerProfile
 {
     public interface IGameConfiguration
     {
-        CharacterConfig GetCharacter(int id);
+        ShopConfig ShopConfig { get; }
+        CharacterConfig GetCharacter(int id);     
     }
 }

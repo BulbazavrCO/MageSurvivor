@@ -6,10 +6,13 @@ namespace MageSurvivor.PlayerProfile
 {
     public class GameConfiguration : IGameConfiguration
     {
+        public ShopConfig ShopConfig { get; }
+
         private IReadOnlyDictionary<int, CharacterConfig> _characters;
 
-        public GameConfiguration(List<CharacterConfig> characters)
+        public GameConfiguration(ShopConfig shopConfig, List<CharacterConfig> characters)
         {
+            ShopConfig = shopConfig;
             _characters = characters.ToDictionary(x => x.Id);
         }
 

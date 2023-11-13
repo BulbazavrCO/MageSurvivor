@@ -1,0 +1,32 @@
+﻿{
+    "CoinsProducts": {
+        "1": {
+            "Value": 100,
+            "Price": 10
+        },
+
+        "2": {
+            "Value": 200,
+            "Price": 18
+        },
+
+        "3": {
+            "Value": 400,
+            "Price": 35
+        },
+
+        "4": {
+            "Value": 800,
+            "Price": 60
+        }
+    },
+
+    "CharacterProducts": {
+        "2": {
+            "Price": 100
+        },
+        "3": {
+            "Price": 250
+        }
+    }
+}

@@ -116,9 +116,8 @@ namespace MageSurvivor
         public ShopPresenter GetShopPresenter()
         {
             if(_shopPresenter == null)
-            {               
-
-                _shopPresenter = new ShopPresenter(GetViewFactory(), GetViewManager());
+            {
+                _shopPresenter = new ShopPresenter(GetViewFactory(), GetViewManager(), GetProfile());
             }
 
             return _shopPresenter;

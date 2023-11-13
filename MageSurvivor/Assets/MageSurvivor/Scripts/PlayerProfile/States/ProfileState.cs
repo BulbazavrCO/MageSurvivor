@@ -4,7 +4,8 @@ namespace MageSurvivor.PlayerProfile
 {
     public class ProfileState
     {
-        public PlayerState PlayerState;
+        public ShopState ShopState;
+        public PlayerState PlayerState;        
         public Dictionary<int, CharacterState> Characters;
     }
 }

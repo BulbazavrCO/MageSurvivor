@@ -16,9 +16,10 @@ namespace MageSurvivor
 
         public ConfigReader()
         {
+            var shop = ReadConfig<ShopConfig>(EConfigs.Shop, ConfigsKey);
             var characters = ReadConfig<List<CharacterConfig>>(EConfigs.Characters, ConfigsKey);
 
-            _gameConfiguration = new GameConfiguration(characters);
+            _gameConfiguration = new GameConfiguration(shop, characters);
         }
 
         public IGameConfiguration GetGameConfiguration()
@@ -28,11 +29,13 @@ namespace MageSurvivor
 
         public ProfileState InitializeProfileState()
         {
+            var shop = ReadConfig<ShopState>(EConfigs.Shop, InitializersKey);
             var player = ReadConfig<PlayerState>(EConfigs.Player, InitializersKey);
             var characters = ReadConfig<List<CharacterState>>(EConfigs.Characters, InitializersKey);
 
             var profileState = new ProfileState()
             {
+                ShopState = shop,
                 PlayerState = player,
                 Characters = characters.ToDictionary(x => x.Id)
             };

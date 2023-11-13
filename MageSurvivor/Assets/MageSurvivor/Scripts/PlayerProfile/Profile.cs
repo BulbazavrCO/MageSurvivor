@@ -25,12 +25,14 @@ namespace MageSurvivor.PlayerProfile
         {
             var characterState = _profileState.Characters[id];
             var characterConfig = _gameConfiguration.GetCharacter(id);
+            var characterProductConfig = _gameConfiguration.ShopConfig.CharacterProducts[id];
 
             characterState.Level = 1;
 
-            var cost = characterConfig.LevelsCost[0];
-            _profileState.PlayerState.Coins -= cost;
+            var price = characterProductConfig.Price;
+            _profileState.PlayerState.Coins -= price;
 
+            _profileState.ShopState.CharacterProducts.Remove(id);
             _profileState.PlayerState.Characters.Add(id);
 
             BalanceChanged();
@@ -86,6 +88,30 @@ namespace MageSurvivor.PlayerProfile
             }
 
             return characters;
+        }
+
+        public List<CharacterProductInfo> GetCharacterProducts()
+        {
+            List<CharacterProductInfo> characterProducts = new List<CharacterProductInfo>();
+
+            foreach(var characterId in _profileState.ShopState.CharacterProducts)
+            {
+                var characterProductInfo = GetCharacterProduct(characterId);
+                characterProducts.Add(characterProductInfo);
+            }
+
+            return characterProducts;
+        }
+
+        private CharacterProductInfo GetCharacterProduct(int id)
+        {
+            var shopConfig = _gameConfiguration.ShopConfig;
+            var characterConfig = _gameConfiguration.GetCharacter(id);
+            var characterProductConfig = shopConfig.CharacterProducts[id];
+
+            var characterProductInfo = new CharacterProductInfo(id, characterConfig.Name, characterProductConfig.Price);
+
+            return characterProductInfo;
         }
     }
 }
