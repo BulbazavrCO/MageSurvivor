@@ -1,5 +1,6 @@
 using MageSurvivor.PlayerProfile;
 using MageSurvivor.Utils;
+using MageSurvivor.Configs;
 
 namespace MageSurvivor
 {
@@ -9,6 +10,7 @@ namespace MageSurvivor
         private IResourceManager _resourcesManager;
         private IGameConfiguration _gameConfiguration;
 
+        private GameCamera _gameCamera;
         private ViewManager _viewManager;
         private MenuPresenter _menuPresenter;
         private ShopPresenter _shopPresenter;
@@ -22,6 +24,7 @@ namespace MageSurvivor
 
         public void Dispose()
         {
+            _gameCamera = null;
             _viewFactory = null;
             _viewManager = null;
             _menuPresenter = null;
@@ -93,6 +96,17 @@ namespace MageSurvivor
             }
 
             return _gameConfiguration;
+        }
+
+        public GameCamera GetGameCamera()
+        {
+            if(_gameCamera == null)
+            {
+                var resourceManager = GetResourceManager();
+                _gameCamera = resourceManager.CreatePrefabInstance<EGameComponents, GameCamera>(EGameComponents.GameCamera);
+            }
+
+            return _gameCamera;
         }
 
         public ViewManager GetViewManager()

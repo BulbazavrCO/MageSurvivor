@@ -1,4 +1,4 @@
-namespace MageSurvivor.PlayerProfile
+namespace MageSurvivor.Configs
 {
     public class CoinsProductConfig
     {       

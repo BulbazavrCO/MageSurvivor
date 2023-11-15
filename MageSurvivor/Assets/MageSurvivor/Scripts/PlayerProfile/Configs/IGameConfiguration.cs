@@ -1,8 +1,8 @@
-namespace MageSurvivor.PlayerProfile
+namespace MageSurvivor.Configs
 {
     public interface IGameConfiguration
     {
         ShopConfig ShopConfig { get; }
-        CharacterConfig GetCharacter(int id);     
+        CharacterConfig GetCharacter(int id);      
     }
 }

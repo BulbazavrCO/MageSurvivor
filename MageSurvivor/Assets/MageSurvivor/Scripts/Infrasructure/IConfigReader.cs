@@ -1,6 +1,6 @@
 using MageSurvivor.PlayerProfile;
 
-namespace MageSurvivor
+namespace MageSurvivor.Configs
 {
     public interface IConfigReader
     {

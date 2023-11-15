@@ -158,10 +158,7 @@ namespace MageSurvivor.Utils
         private string GetPathFromNamespace(Type type, string name)
         {
             string path = "";
-            if (type.Namespace != null)
-            {
-                path = type.Namespace.Replace('.', '/') + @"/";
-            }
+           
             path += type.Name + @"/" + name;
 
             return path;

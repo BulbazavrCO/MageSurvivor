@@ -1,6 +1,7 @@
 using UnityEngine;
 using Newtonsoft.Json;
 using MageSurvivor.PlayerProfile;
+using MageSurvivor.Configs;
 
 namespace MageSurvivor
 {

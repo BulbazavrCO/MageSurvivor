@@ -1,5 +1,6 @@
 using UnityEngine;
 using MageSurvivor.Utils;
+using MageSurvivor.Configs;
 
 namespace MageSurvivor
 {
@@ -22,6 +23,11 @@ namespace MageSurvivor
             return _composition.GetProfileStorage();
         }
 
+        public static IGameConfiguration GetGameConfiguration()
+        {
+            return _composition.GetGameConfiguration();
+        }
+
         public static BalancePresenter GetBalancePresenter()
         {
             return _composition.GetBalancePresenter();
@@ -30,6 +36,11 @@ namespace MageSurvivor
         public static MenuPresenter GetMenuPresenter()
         {
             return _composition.GetMenuPresenter();
+        }
+
+        public static GameCamera GetGameCamera()
+        {
+            return _composition.GetGameCamera();
         }
 
         private void OnDestroy()

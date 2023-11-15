@@ -1,4 +1,4 @@
-namespace MageSurvivor
+namespace MageSurvivor.Configs
 {
     public class CharacterProductConfig
     {        
