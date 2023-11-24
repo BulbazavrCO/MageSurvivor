@@ -11,5 +11,6 @@ namespace MageSurvivor
         void Setup();
         void Hit(float damage);
         void Heal(float value);
+        void StatsChanged();
     }
 }

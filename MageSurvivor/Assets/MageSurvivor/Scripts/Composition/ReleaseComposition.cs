@@ -6,6 +6,7 @@ namespace MageSurvivor
 {
     public class ReleaseComposition : IComposition
     {
+        private IInput _input;
         private IViewFactory _viewFactory;
         private IResourceManager _resourcesManager;
         private IGameConfiguration _gameConfiguration;
@@ -24,6 +25,7 @@ namespace MageSurvivor
 
         public void Dispose()
         {
+            _input = null;
             _gameCamera = null;
             _viewFactory = null;
             _viewManager = null;
@@ -33,6 +35,16 @@ namespace MageSurvivor
             _resourcesManager = null;            
             _gameConfiguration = null;
             _charactersPresenter = null;
+        }
+
+        public IInput GetInput()
+        {
+            if(_input == null)
+            {
+                _input = new MobileInput();
+            }
+
+            return _input;
         }
 
         public IProfile GetProfile()

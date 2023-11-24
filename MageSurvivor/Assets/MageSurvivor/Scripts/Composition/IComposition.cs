@@ -7,12 +7,13 @@ namespace MageSurvivor
 {
     public interface IComposition : IDisposable
     {
+        IInput GetInput();
         IProfile GetProfile();
         IViewFactory GetViewFactory();
         IConfigReader GetConfigReader();
         IProfileStorage GetProfileStorage();
         IResourceManager GetResourceManager();
-        IGameConfiguration GetGameConfiguration();
+        IGameConfiguration GetGameConfiguration();       
 
         GameCamera GetGameCamera();
         ViewManager GetViewManager();

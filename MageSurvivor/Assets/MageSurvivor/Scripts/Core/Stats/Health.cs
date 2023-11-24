@@ -9,7 +9,7 @@ namespace MageSurvivor
 
         private StatsProvider _statsProvider;
 
-        public float HealthPoints => throw new NotImplementedException();
+        public float HealthPoints => _healthPoints;
 
         public event Action Dying = () => { };
 
@@ -21,9 +21,7 @@ namespace MageSurvivor
         public void Setup()
         {         
             _healthPoints = _statsProvider.GetStatValue(EStats.Health);
-            _maxHealthPoints = _healthPoints;
-
-            _statsProvider.StatsChanged += RecalculateHeath;
+            _maxHealthPoints = _healthPoints;       
         }
 
         public void Heal(float value)
@@ -49,11 +47,14 @@ namespace MageSurvivor
             if(_healthPoints <= 0)
             {
                 _healthPoints = 0;
-                Dying();
-
-                _statsProvider.StatsChanged -= RecalculateHeath;
+                Dying();               
             }
-        }       
+        }
+
+        public void StatsChanged()
+        {
+            RecalculateHeath();
+        }
 
         private void RecalculateHeath()
         {

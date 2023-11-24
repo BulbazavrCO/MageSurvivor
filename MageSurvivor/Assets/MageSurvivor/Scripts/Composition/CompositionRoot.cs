@@ -28,6 +28,11 @@ namespace MageSurvivor
             return _composition.GetGameConfiguration();
         }
 
+        public static IInput GetInput()
+        {
+            return _composition.GetInput();
+        }
+
         public static BalancePresenter GetBalancePresenter()
         {
             return _composition.GetBalancePresenter();
