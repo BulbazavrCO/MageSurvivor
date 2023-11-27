@@ -1,3 +1,5 @@
+using UnityEngine.SceneManagement;
+
 namespace MageSurvivor
 {
     public class MenuPresenter
@@ -38,7 +40,7 @@ namespace MageSurvivor
 
         private void Play()
         {
-
+            SceneManager.LoadScene(EScenes.Core.ToString());
         }
 
         private void OpenShop()

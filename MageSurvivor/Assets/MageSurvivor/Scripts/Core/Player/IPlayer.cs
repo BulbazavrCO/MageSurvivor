@@ -1,12 +1,7 @@
-using System;
-
 namespace MageSurvivor
 {
-    public interface IPlayer : IStats
+    public interface IPlayer : IUnit
     {
-        event Action Died;
-
-        void Setup(CharacterInfo character);
-        bool IsAlive();       
+        void Setup(CharacterInfo character);             
     }
 }

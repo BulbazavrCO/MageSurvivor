@@ -23,6 +23,11 @@ namespace MageSurvivor
             return _composition.GetProfileStorage();
         }
 
+        public static IGameScenario GetGameScenario()
+        {
+            return _composition.GetGameScenario();
+        }
+
         public static IGameConfiguration GetGameConfiguration()
         {
             return _composition.GetGameConfiguration();
@@ -31,6 +36,11 @@ namespace MageSurvivor
         public static IInput GetInput()
         {
             return _composition.GetInput();
+        }
+
+        public static IUnitRepository GetUnitRepository()
+        {
+            return _composition.GetUnitRepository();
         }
 
         public static BalancePresenter GetBalancePresenter()
@@ -43,9 +53,9 @@ namespace MageSurvivor
             return _composition.GetMenuPresenter();
         }
 
-        public static GameCamera GetGameCamera()
+        public static PlayerCreator GetPlayerCreator()
         {
-            return _composition.GetGameCamera();
+            return _composition.GetPlayerCreator();
         }
 
         private void OnDestroy()

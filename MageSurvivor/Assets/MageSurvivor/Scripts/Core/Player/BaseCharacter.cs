@@ -19,6 +19,8 @@ namespace MageSurvivor
         public UnitAnimator Animator { get; private set; }
         public BonusHolder BonusHolder { get; private set; }
 
+        public Transform Pivot => transform;
+
         protected virtual void Awake()
         {
             _gameConfiguration = CompositionRoot.GetGameConfiguration();           

@@ -16,6 +16,7 @@ namespace MageSurvivor.PlayerProfile
 
         BalanceInfo GetBalance();
 
+        CharacterInfo GetSelectedCharacter();
         CharacterInfo GetCharacter(int id);
         List<CharacterInfo> GetCharacters();
 

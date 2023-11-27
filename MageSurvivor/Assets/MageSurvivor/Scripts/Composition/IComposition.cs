@@ -11,12 +11,14 @@ namespace MageSurvivor
         IProfile GetProfile();
         IViewFactory GetViewFactory();
         IConfigReader GetConfigReader();
+        IGameScenario GetGameScenario();
         IProfileStorage GetProfileStorage();
+        IUnitRepository GetUnitRepository();
         IResourceManager GetResourceManager();
-        IGameConfiguration GetGameConfiguration();       
-
-        GameCamera GetGameCamera();
+        IGameConfiguration GetGameConfiguration(); 
+        
         ViewManager GetViewManager();
+        PlayerCreator GetPlayerCreator();
         MenuPresenter GetMenuPresenter();
         ShopPresenter GetShopPresenter();
         BalancePresenter GetBalancePresenter();

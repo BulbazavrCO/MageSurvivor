@@ -8,11 +8,13 @@ namespace MageSurvivor
     {
         private IInput _input;
         private IViewFactory _viewFactory;
-        private IResourceManager _resourcesManager;
+        private IGameScenario _gameScenario;
+        private IUnitRepository _unitRepository;        
+        private IResourceManager _resourcesManager;        
         private IGameConfiguration _gameConfiguration;
-
-        private GameCamera _gameCamera;
+      
         private ViewManager _viewManager;
+        private PlayerCreator _playerCreator;
         private MenuPresenter _menuPresenter;
         private ShopPresenter _shopPresenter;
         private BalancePresenter _balancePresenter;
@@ -25,10 +27,10 @@ namespace MageSurvivor
 
         public void Dispose()
         {
-            _input = null;
-            _gameCamera = null;
+            _input = null;           
             _viewFactory = null;
             _viewManager = null;
+            _playerCreator = null;
             _menuPresenter = null;
             _shopPresenter = null;
             _balancePresenter = null;
@@ -99,6 +101,16 @@ namespace MageSurvivor
             return _profileStorage;
         }
 
+        public IGameScenario GetGameScenario()
+        {
+            if(_gameScenario == null)
+            {
+                _gameScenario = new GameScenario(GetProfile(), GetPlayerCreator());
+            }
+
+            return _gameScenario;
+        }
+
         public IGameConfiguration GetGameConfiguration()
         {
             if(_gameConfiguration == null)
@@ -110,15 +122,14 @@ namespace MageSurvivor
             return _gameConfiguration;
         }
 
-        public GameCamera GetGameCamera()
+        public IUnitRepository GetUnitRepository()
         {
-            if(_gameCamera == null)
+            if(_unitRepository == null)
             {
-                var resourceManager = GetResourceManager();
-                _gameCamera = resourceManager.CreatePrefabInstance<EGameComponents, GameCamera>(EGameComponents.GameCamera);
+                _unitRepository = new UnitRepository();
             }
 
-            return _gameCamera;
+            return _unitRepository;
         }
 
         public ViewManager GetViewManager()
@@ -169,6 +180,16 @@ namespace MageSurvivor
             }
 
             return _charactersPresenter;
+        }
+
+        public PlayerCreator GetPlayerCreator()
+        {
+            if(_playerCreator == null)
+            {
+                _playerCreator = new PlayerCreator(GetProfile(), GetUnitRepository(), GetResourceManager());
+            }
+
+            return _playerCreator;
         }
     }
 }

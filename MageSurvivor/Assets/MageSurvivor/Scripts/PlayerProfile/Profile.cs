@@ -71,6 +71,15 @@ namespace MageSurvivor.PlayerProfile
             return balanceInfo;
         }
 
+
+        public CharacterInfo GetSelectedCharacter()
+        {
+            var characterId = _profileState.PlayerState.SelectedCharacter;
+            var characterInfo = GetCharacter(characterId);
+
+            return characterInfo;
+        }
+
         public CharacterInfo GetCharacter(int id)
         {
             var characterState = _profileState.Characters[id];
