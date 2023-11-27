@@ -46,7 +46,7 @@ namespace MageSurvivor.CharacterBehaviorStates
 
         private void UpdateMoveSpeed()
         {
-            var moveSpeed = _characterBehavior.Character.GetStatValue(EStats.Speed);
+            var moveSpeed = _characterBehavior.Character.GetStatValue(EStats.MoveSpeed);
             _characterBehavior.Character.Mover.SetMoveSpeed(moveSpeed);
             _characterBehavior.Character.Animator.SetAnimationSpeed(moveSpeed);
         }

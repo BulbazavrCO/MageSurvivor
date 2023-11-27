@@ -4,6 +4,6 @@ namespace MageSurvivor
     {
        Health,
        Damage,
-       Speed
+       MoveSpeed
     }
 }
