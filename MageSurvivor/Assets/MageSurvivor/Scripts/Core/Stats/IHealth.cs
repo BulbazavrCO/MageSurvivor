@@ -5,6 +5,7 @@ namespace MageSurvivor
     public interface IHealth
     {
         event Action Dying;
+        event Action HealthChanged;
 
         float HealthPoints { get; }
 
@@ -12,5 +13,7 @@ namespace MageSurvivor
         void Hit(float damage);
         void Heal(float value);
         void StatsChanged();
+
+        float GetHealthPercent();
     }
 }

@@ -12,6 +12,7 @@ namespace MageSurvivor
         public float HealthPoints => _healthPoints;
 
         public event Action Dying = () => { };
+        public event Action HealthChanged = () => { };
 
         public Health(StatsProvider statsProvider)
         {
@@ -35,6 +36,8 @@ namespace MageSurvivor
             {
                 _healthPoints = _maxHealthPoints;
             }
+
+            HealthChanged();
         }
 
         public void Hit(float damage)
@@ -49,11 +52,18 @@ namespace MageSurvivor
                 _healthPoints = 0;
                 Dying();               
             }
+
+            HealthChanged();
         }
 
         public void StatsChanged()
         {
             RecalculateHeath();
+        }
+
+        public float GetHealthPercent()
+        {
+            return _healthPoints / _maxHealthPoints;
         }
 
         private void RecalculateHeath()

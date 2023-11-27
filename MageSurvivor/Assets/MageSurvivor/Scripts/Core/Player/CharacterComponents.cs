@@ -10,7 +10,7 @@ namespace MageSurvivor
 
         public void AddAnimator(UnitAnimator animator)
         {
-            Animator = animator;
+            Animator = animator;            
         }
 
         public void AddBonusHolder(BonusHolder bonusHolder)

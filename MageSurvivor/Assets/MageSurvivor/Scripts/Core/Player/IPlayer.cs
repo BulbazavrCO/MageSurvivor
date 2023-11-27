@@ -2,6 +2,8 @@ namespace MageSurvivor
 {
     public interface IPlayer : IUnit
     {
-        void Setup(CharacterInfo character);             
+        void Setup(CharacterInfo character);
+
+        float GetHealthPercent();
     }
 }

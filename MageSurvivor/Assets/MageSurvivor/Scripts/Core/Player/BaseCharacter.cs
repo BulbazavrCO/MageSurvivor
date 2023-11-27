@@ -7,7 +7,8 @@ namespace MageSurvivor
 {
     public abstract class BaseCharacter : MonoBehaviour, IPlayer, ICharacterComponents
     {
-        public event Action Died = () => { };        
+        public event Action Died = () => { };
+        public event Action HealthChanged = () => { };
 
         private IHealth _health;
         private IGameConfiguration _gameConfiguration;       
@@ -41,7 +42,8 @@ namespace MageSurvivor
         public void Dispose()
         {
             _health.Dying -= Die;
-            _statsProvider.StatsChanged -= StatsChanged;
+            _health.HealthChanged -= HandleHealthChanged;
+            _statsProvider.StatsChanged -= HandleStatsChanged;
 
             _statsProvider.Clear();
             gameObject.SetActive(false);
@@ -53,7 +55,8 @@ namespace MageSurvivor
             _statsProvider.Setup(characterConfig.Stats, character.Level);
             _health.Setup();          
             _health.Dying += Die;
-            _statsProvider.StatsChanged += StatsChanged;
+            _health.HealthChanged += HandleHealthChanged;
+            _statsProvider.StatsChanged += HandleStatsChanged;
         }
 
         public float GetStatValue(EStats type)
@@ -76,19 +79,10 @@ namespace MageSurvivor
             _statsProvider.RemoveModifier(modifier);
         }
 
-        public abstract void SpellUsed();
-
-        private void Die()
+        public void TakeDamage(float value)
         {
-            Died();
-            _behavior.Die();         
+            _health.Hit(value);
         }
-
-        private void StatsChanged()
-        {
-            _health.StatsChanged();
-            _behavior.StatsChaged();            
-        }       
 
         public void AddMover(Mover mover)
         {
@@ -103,6 +97,30 @@ namespace MageSurvivor
         public void AddBonusHolder(BonusHolder bonusHolder)
         {
             BonusHolder = bonusHolder;
+        }
+
+        public float GetHealthPercent()
+        {
+            return _health.GetHealthPercent();
+        }
+
+        public abstract void SpellUsed();
+
+        private void Die()
+        {
+            Died();
+            _behavior.Die();         
+        }
+
+        private void HandleHealthChanged()
+        {
+            HealthChanged();
+        }
+
+        private void HandleStatsChanged()
+        {
+            _health.StatsChanged();
+            _behavior.StatsChaged();            
         }
     }
 }
