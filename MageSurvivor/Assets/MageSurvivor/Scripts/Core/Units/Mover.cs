@@ -16,8 +16,9 @@ namespace MageSurvivor
 
         public void Move(Vector2 direction)
         {
-            _self.Translate(direction * _moveSpeed * Time.deltaTime);
-            _self.LookAt(_self.position + new Vector3(direction.x, direction.y, _self.position.z));
+            Vector3 moveDirection = new Vector3(direction.x, 0, direction.y);
+            _self.position += moveDirection * _moveSpeed * Time.deltaTime;
+            _self.LookAt(_self.position + new Vector3(direction.x, 0, direction.y));
         }         
 
         public void SetMoveSpeed(float moveSpeed)

@@ -6,6 +6,7 @@ namespace MageSurvivor
         ShopView,
         CharactersView,
         BalanceView,
-        HUDView
+        HUDView,
+        InputView
     }
 }

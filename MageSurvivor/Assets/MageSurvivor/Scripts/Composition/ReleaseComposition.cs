@@ -17,7 +17,8 @@ namespace MageSurvivor
         private PlayerCreator _playerCreator;
         private MenuPresenter _menuPresenter;
         private ShopPresenter _shopPresenter;
-        private BalancePresenter _balancePresenter;
+        private InputPresenter _inputPresenter;
+        private BalancePresenter _balancePresenter;        
         private CharactersPresenter _charactersPresenter;
 
         // Long living objects
@@ -33,6 +34,7 @@ namespace MageSurvivor
             _playerCreator = null;
             _menuPresenter = null;
             _shopPresenter = null;
+            _inputPresenter = null;
             _balancePresenter = null;
             _resourcesManager = null;            
             _gameConfiguration = null;
@@ -43,7 +45,7 @@ namespace MageSurvivor
         {
             if(_input == null)
             {
-                _input = new MobileInput();
+                _input = new MobileInput(GetInputPresenter());
             }
 
             return _input;
@@ -190,6 +192,16 @@ namespace MageSurvivor
             }
 
             return _playerCreator;
+        }
+
+        private InputPresenter GetInputPresenter()
+        {
+            if(_inputPresenter == null)
+            {
+                _inputPresenter = new InputPresenter(GetViewFactory(), GetViewManager());
+            }
+
+            return _inputPresenter;
         }
     }
 }
